@@ -19,3 +19,4 @@ Thumbs.db  # Windows
 # Ignore logs and temporary files
 *.log
 *.tmp
+.gitignore
