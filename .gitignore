@@ -1,2 +1,21 @@
 BankManagementSystem.java
+
+# Ignore compiled Java class files
+*.class
+
+# Ignore bin folder (contains compiled files)
 bin/
+
+# Ignore libraries (if these can be re-downloaded)
+lib/
+
+# Ignore VS Code settings (optional)
+.vscode/
+
+# Ignore system-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Ignore logs and temporary files
+*.log
+*.tmp
