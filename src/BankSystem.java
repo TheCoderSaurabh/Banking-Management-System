@@ -27,11 +27,13 @@ public class BankSystem extends JFrame implements ActionListener {
 
         //creating panels
         CreateAccount createAccountPanel = new CreateAccount(cardLayout, mainPanel, conn);
+        DeleteAccount deleteAccountPanel = new DeleteAccount(cardLayout, mainPanel, conn);
 
         // Adding different panels
         mainPanel.add(createHomePanel(), "Home");
         mainPanel.add(createAdminPanel(), "AdminHome");
         mainPanel.add(createAccountPanel, "CreateAccount");
+        mainPanel.add(deleteAccountPanel, "DeleteAccount");
 
         add(mainPanel);
         setVisible(true);
@@ -177,6 +179,8 @@ public class BankSystem extends JFrame implements ActionListener {
         // Add Action Listeners in a separate method
         backButton.addActionListener(e -> cardLayout.show(mainPanel, "Home"));
         createAccountBtn.addActionListener(e -> cardLayout.show(mainPanel, "CreateAccount"));
+        deleteAccountBtn.addActionListener(e -> cardLayout.show(mainPanel, "DeleteAccount"));
+        
 
         return panel;
     }
