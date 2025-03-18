@@ -26,7 +26,7 @@ public class CreateAccount extends JPanel implements ActionListener {
                 TitledBorder.TOP, // Title Position (TOP)
                 new Font("Arial", Font.BOLD, 14), // Title Font
                 Color.BLUE // Title Color
-));
+        ));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
@@ -106,6 +106,7 @@ public class CreateAccount extends JPanel implements ActionListener {
                 if (rs.next()) {
                     int accountNumber = rs.getInt(1);
                     JOptionPane.showMessageDialog(this, "Account Created Successfully!\nAccount No: " + accountNumber, "Success", JOptionPane.INFORMATION_MESSAGE);
+                    cardLayout.show(mainPanel, "AdminHome");
                 }
             }
             pst.close();

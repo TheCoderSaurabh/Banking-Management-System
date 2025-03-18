@@ -180,7 +180,6 @@ public class BankSystem extends JFrame implements ActionListener {
         backButton.addActionListener(e -> cardLayout.show(mainPanel, "Home"));
         createAccountBtn.addActionListener(e -> cardLayout.show(mainPanel, "CreateAccount"));
         deleteAccountBtn.addActionListener(e -> cardLayout.show(mainPanel, "DeleteAccount"));
-        
 
         return panel;
     }
