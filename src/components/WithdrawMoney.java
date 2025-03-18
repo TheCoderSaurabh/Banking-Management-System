@@ -1,3 +1,4 @@
+package components;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -133,8 +134,10 @@ public class WithdrawMoney extends JPanel implements ActionListener {
 
             if (rowsUpdated > 0) {
                 JOptionPane.showMessageDialog(this, "₹" + amount + " Withdrawn Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                cardLayout.show(mainPanel, "AdminHome");
             } else {
                 JOptionPane.showMessageDialog(this, "Error Processing Withdrawal.", "Error", JOptionPane.ERROR_MESSAGE);
+                cardLayout.show(mainPanel, "AdminHome");
             }
 
             // Close Statements

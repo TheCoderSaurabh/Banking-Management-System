@@ -95,8 +95,11 @@ public class DeleteAccount extends JPanel implements ActionListener {
 
             if (rowsDeleted > 0) {
                 JOptionPane.showMessageDialog(this, "Account Deleted Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                cardLayout.show(mainPanel, "AdminHome");
             } else {
                 JOptionPane.showMessageDialog(this, "Account Not Found! Please check your details.", "Error", JOptionPane.ERROR_MESSAGE);
+                cardLayout.show(mainPanel, "AdminHome");
+
             }
 
             pst.close();

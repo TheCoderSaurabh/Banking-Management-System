@@ -1,3 +1,5 @@
+package components;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -113,8 +115,11 @@ public class DepositMoney extends JPanel implements ActionListener {
 
             if (rowsUpdated > 0) {
                 JOptionPane.showMessageDialog(this, "₹" + amount + " Deposited Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                cardLayout.show(mainPanel, "AdminHome");
             } else {
                 JOptionPane.showMessageDialog(this, "Account Not Found! Please check details.", "Error", JOptionPane.ERROR_MESSAGE);
+                cardLayout.show(mainPanel, "AdminHome");
+
             }
 
             pst.close();
