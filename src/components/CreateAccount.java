@@ -93,6 +93,8 @@ public class CreateAccount extends JPanel implements ActionListener {
 
         try {
             int age = Integer.parseInt(ageText);
+            conn.setAutoCommit(false); //used to stop creating new account even if error occurs
+            
             String insertQuery = "INSERT INTO accounts (account_holder_name, aadhar, phone, age) VALUES (?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, fullName);
@@ -112,8 +114,30 @@ public class CreateAccount extends JPanel implements ActionListener {
             pst.close();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Age must be a valid number!", "Error", JOptionPane.ERROR_MESSAGE);
+            try {
+                conn.rollback();  // 🔄 Rollback transaction on error
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error Creating Account: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            try {
+                conn.rollback();  // 🔄 Rollback transaction on error
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
+        } finally {
+            try {
+                conn.setAutoCommit(true);  // 🔄 Reset auto-commit mode
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
+    
+        // catch (NumberFormatException ex) {
+        //     JOptionPane.showMessageDialog(this, "Age must be a valid number!", "Error", JOptionPane.ERROR_MESSAGE);
+        // } catch (SQLException ex) {
+        //     JOptionPane.showMessageDialog(this, "Error Creating Account: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        // }
     }
 }

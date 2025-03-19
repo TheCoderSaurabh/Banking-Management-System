@@ -1,4 +1,7 @@
 BankManagementSystem.java
+accounts.dat
+Bank.c
+Bank.exe
 
 # Ignore compiled Java class files
 *.class
