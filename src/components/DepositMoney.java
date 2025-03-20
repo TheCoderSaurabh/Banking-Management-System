@@ -113,7 +113,15 @@ public class DepositMoney extends JPanel implements ActionListener {
 
             int rowsUpdated = pst.executeUpdate();
 
-            if (rowsUpdated > 0) {
+            String insertQuery="INSERT INTO transactions (account_number, transaction_type, amount) VALUES ( ?, ?, ?)";
+            PreparedStatement ptst=conn.prepareStatement(insertQuery);
+            ptst.setInt(1, accNumber);
+            ptst.setString(2, "DEPOSIT");
+            ptst.setDouble(3, amount);
+
+            int res = ptst.executeUpdate();
+
+            if (rowsUpdated > 0 && res > 0) {
                 JOptionPane.showMessageDialog(this, "₹" + amount + " Deposited Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 cardLayout.show(mainPanel, "AdminHome");
             } else {
