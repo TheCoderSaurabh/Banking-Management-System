@@ -132,7 +132,15 @@ public class WithdrawMoney extends JPanel implements ActionListener {
 
             int rowsUpdated = updateStmt.executeUpdate();
 
-            if (rowsUpdated > 0) {
+            String createQuery = "INSERT INTO transactions (account_number, transaction_type, amount) VALUES (?, ?, ?)";
+            PreparedStatement ptst=conn.prepareStatement(createQuery);
+            ptst.setInt(1, accNumber);
+            ptst.setString(2, "WITHDRAWAL");
+            ptst.setDouble(3, amount);
+
+            int res = ptst.executeUpdate();
+
+            if (rowsUpdated > 0 && res > 0) {
                 JOptionPane.showMessageDialog(this, "₹" + amount + " Withdrawn Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 cardLayout.show(mainPanel, "AdminHome");
             } else {
