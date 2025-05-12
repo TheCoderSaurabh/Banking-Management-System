@@ -30,6 +30,7 @@ public class BankSystem extends JFrame implements ActionListener {
         DeleteAccount deleteAccountPanel = new DeleteAccount(cardLayout, mainPanel, conn);
         DepositMoney depositMoneyPanel = new DepositMoney(cardLayout, mainPanel, conn);
         WithdrawMoney withdrawMoneyPanel = new WithdrawMoney(cardLayout, mainPanel, conn);
+        ShowBankDetail showBankDetailPanel = new ShowBankDetail(cardLayout, mainPanel, conn);
 
         // Adding different panels
         mainPanel.add(createHomePanel(), "Home");
@@ -38,6 +39,7 @@ public class BankSystem extends JFrame implements ActionListener {
         mainPanel.add(deleteAccountPanel, "DeleteAccount");
         mainPanel.add(depositMoneyPanel, "DepositMoney");
         mainPanel.add(withdrawMoneyPanel, "WithdrawMoney");
+        mainPanel.add(showBankDetailPanel, "ShowBankDetail");
 
         add(mainPanel);
         setVisible(true);
@@ -186,6 +188,7 @@ public class BankSystem extends JFrame implements ActionListener {
         deleteAccountBtn.addActionListener(e -> cardLayout.show(mainPanel, "DeleteAccount"));
         depositBtn.addActionListener(e -> cardLayout.show(mainPanel, "DepositMoney"));
         withdrawBtn.addActionListener(e -> cardLayout.show(mainPanel, "WithdrawMoney"));
+        viewAccountsBtn.addActionListener(e -> cardLayout.show(mainPanel, "ShowBankDetail"));
 
         return panel;
     }
